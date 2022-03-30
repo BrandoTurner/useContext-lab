@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {createContext} from "react";
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import YellowPage from './components/YellowPage'
+import GreenPage from "./components/GreenPage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export const Context = createContext('dark');
+const App = () => {
+  
+  
+  return(
+    <Context.Provider value={'light'}>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/yellowpage" element={<YellowPage/>} />
+      <Route path="/greenpage" element={<GreenPage/>} />
+      </Routes>
+      </BrowserRouter>
+      </Context.Provider>
 
-export default App;
+  )
+};
+
+export default App
